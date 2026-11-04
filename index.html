@@ -1,1 +1,778 @@
-WE DEVELOPING THIS PAGE NOW.
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The FlorestMC Wikipedia</title>
+  <meta name="description" content="Политическая википедия проекта The FlorestMC — информация о государствах, владельцах, координатах и городах." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0c1210;
+      --bg-elevated: #131a17;
+      --bg-card: #18201c;
+      --bg-hover: #1e2923;
+      --border: #2a3a32;
+      --border-light: #3a4d42;
+      --text: #e8f0eb;
+      --text-muted: #9aaf9f;
+      --text-dim: #6b7f72;
+      --accent: #3d9b6a;
+      --accent-hover: #4cb87d;
+      --accent-soft: rgba(61, 155, 106, 0.15);
+      --accent-glow: rgba(61, 155, 106, 0.25);
+      --danger: #c45c5c;
+      --warning: #c9a14a;
+      --radius: 12px;
+      --radius-sm: 8px;
+      --shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+      --font: 'Inter', system-ui, -apple-system, sans-serif;
+      --mono: 'JetBrains Mono', ui-monospace, monospace;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Background subtle pattern */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(61, 155, 106, 0.08), transparent),
+        radial-gradient(ellipse 60% 40% at 100% 100%, rgba(61, 155, 106, 0.04), transparent);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+    a:hover {
+      color: var(--accent-hover);
+    }
+
+    /* Layout */
+    .app {
+      position: relative;
+      z-index: 1;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 20px 80px;
+    }
+
+    /* Header */
+    header {
+      padding: 28px 0 20px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+    .logo:hover {
+      color: var(--text);
+    }
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--accent), #2d7a52);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+
+    .nav-home {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      transition: all 0.15s ease;
+    }
+    .nav-home:hover {
+      background: var(--bg-hover);
+      color: var(--text);
+      border-color: var(--border-light);
+    }
+
+    /* Page content */
+    .page {
+      animation: fadeIn 0.25s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Home */
+    .hero {
+      text-align: center;
+      margin-bottom: 48px;
+      padding: 20px 0 8px;
+    }
+    .hero h1 {
+      font-size: clamp(1.75rem, 4vw, 2.35rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #e8f0eb 0%, #9aaf9f 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 540px;
+      margin: 0 auto 12px;
+    }
+    .hero .sub {
+      font-size: 0.95rem;
+      color: var(--text-dim);
+    }
+
+    .cta-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin: 36px 0 40px;
+      text-align: center;
+    }
+    .cta-box p {
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+    }
+    .cta-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+    .cta-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(61, 155, 106, 0.35);
+      border-radius: var(--radius-sm);
+      color: var(--accent);
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: all 0.15s ease;
+    }
+    .cta-links a:hover {
+      background: rgba(61, 155, 106, 0.25);
+      border-color: var(--accent);
+      color: var(--accent-hover);
+    }
+
+    /* Country grid */
+    .section-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-dim);
+      margin-bottom: 16px;
+    }
+
+    .countries-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 14px;
+    }
+
+    .country-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+      padding: 18px 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text);
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      font-family: inherit;
+      width: 100%;
+    }
+    .country-btn:hover {
+      background: var(--bg-hover);
+      border-color: var(--border-light);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+    .country-btn .name {
+      font-weight: 600;
+      font-size: 1.05rem;
+      letter-spacing: -0.01em;
+    }
+    .country-btn .meta {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      font-family: var(--mono);
+    }
+    .country-btn .owner {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* Country detail page */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+      padding: 6px 0;
+      transition: color 0.15s ease;
+    }
+    .back-link:hover {
+      color: var(--accent);
+    }
+
+    .country-header {
+      margin-bottom: 32px;
+    }
+    .country-header h1 {
+      font-size: clamp(1.6rem, 3.5vw, 2.1rem);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      margin-bottom: 8px;
+    }
+    .country-header .path {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+
+    .info-grid {
+      display: grid;
+      gap: 14px;
+      margin-bottom: 36px;
+    }
+
+    .info-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 22px;
+    }
+    .info-card .label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-dim);
+      margin-bottom: 6px;
+    }
+    .info-card .value {
+      font-size: 1.05rem;
+      color: var(--text);
+      word-break: break-word;
+    }
+    .info-card .value a {
+      color: var(--accent);
+    }
+    .info-card .value.mono {
+      font-family: var(--mono);
+      font-size: 0.95rem;
+    }
+    .info-card.highlight {
+      border-color: rgba(61, 155, 106, 0.4);
+      background: linear-gradient(135deg, var(--bg-card), rgba(61, 155, 106, 0.06));
+    }
+
+    .cities-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .city-tag {
+      display: inline-block;
+      padding: 5px 12px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    .note {
+      background: var(--bg-elevated);
+      border-left: 3px solid var(--warning);
+      padding: 14px 18px;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+    footer a {
+      color: var(--text-muted);
+    }
+    footer a:hover {
+      color: var(--accent);
+    }
+
+    /* 404 */
+    .not-found {
+      text-align: center;
+      padding: 60px 20px;
+    }
+    .not-found h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--text-dim);
+      margin-bottom: 12px;
+    }
+    .not-found p {
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      header {
+        padding: 20px 0 16px;
+      }
+      .hero {
+        margin-bottom: 36px;
+      }
+      .cta-box {
+        padding: 20px;
+      }
+      .countries-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <a href="/" class="logo" data-link>
+        <span class="logo-icon">🌲</span>
+        <span>FlorestMC Wiki</span>
+      </a>
+      <a href="/" class="nav-home" data-link>← На главную</a>
+    </header>
+
+    <main id="app"></main>
+
+    <footer>
+      <p>
+        The FlorestMC Wikipedia ·
+        <a href="https://florestmc.ru" target="_blank" rel="noopener">florestmc.ru</a> ·
+        <a href="https://github.com/florestdev/florestmc-wikipedia" target="_blank" rel="noopener">GitHub</a>
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    // GitHub Pages SPA: restore path after 404.html redirect
+    (function () {
+      const redirect = sessionStorage.redirect;
+      delete sessionStorage.redirect;
+      if (redirect && redirect !== location.pathname) {
+        history.replaceState(null, '', redirect);
+      }
+    })();
+
+    // ========== Data ==========
+    const countries = {
+      fg: {
+        name: 'FlorestGrad Empire',
+        path: '/fg',
+        owner: 'FlorestOne4185',
+        leaders: null,
+        site: 'http://gov.fe.florestmc.fun',
+        coords: '41 63 300',
+        cities: ['Флорестград', 'Казань', 'Сырьевой регион', 'Народск', 'Димитров', 'MOGGаганданск-Энергодар'],
+        regime: 'авторитаризм',
+        note: null
+      },
+      moggartha: {
+        name: 'Moggartha',
+        path: '/moggartha',
+        owner: 'HikerMT',
+        leaders: ['Mekkanik_W'],
+        site: null,
+        coords: '93 65 -98',
+        cities: ['Агарта', 'Агарти', 'Арты Агарты', 'Друнино (поселок)'],
+        regime: 'неизвестно',
+        note: null
+      },
+      ceskorep: {
+        name: 'Чешская республика',
+        path: '/ceskorep',
+        owner: 'C_plus_pluswdqsc',
+        leaders: ['Rez0ri', 'MeoowCatYT'],
+        site: null,
+        coords: '-361 87 385',
+        cities: ['Prague', 'Valtice', 'Budowice', '...'],
+        regime: 'неизвестно',
+        note: null
+      },
+      slavyaniya: {
+        name: 'Славяния',
+        path: '/slavyaniya',
+        owner: 'Kaakkujjarrikken',
+        leaders: null,
+        site: null,
+        coords: '-989 128 -196',
+        cities: ['Славяния'],
+        regime: null,
+        note: null
+      },
+      kg: {
+        name: 'Кайфоград',
+        path: '/kg',
+        owner: 'Dyys2ksu7432 (mamamimi22)',
+        leaders: null,
+        site: null,
+        coords: '126 63 796',
+        cities: ['Кайфоград'],
+        regime: null,
+        note: null
+      },
+      jp: {
+        name: 'Япония',
+        path: '/jp',
+        owner: 'Ice67932',
+        leaders: null,
+        site: null,
+        coords: '692 85 1025',
+        cities: null,
+        regime: null,
+        note: null
+      },
+      au: {
+        name: 'Австралия',
+        path: '/au',
+        owner: 'X',
+        leaders: null,
+        site: null,
+        coords: '571 68 3394',
+        cities: null,
+        regime: null,
+        note: null
+      },
+      negerland: {
+        name: 'Негерланды',
+        path: '/negerland',
+        owner: 'X',
+        leaders: null,
+        site: null,
+        coords: '269 66 3364',
+        cities: null,
+        regime: null,
+        note: null
+      },
+      pangea: {
+        name: 'Пангея',
+        path: '/pangea',
+        owner: 'JadesBlooms',
+        leaders: null,
+        site: null,
+        coords: '-449 109 1244',
+        cities: null,
+        regime: null,
+        note: null
+      },
+      antarktida: {
+        name: 'Антарктида',
+        path: '/antarktida',
+        owner: 'X',
+        leaders: null,
+        site: null,
+        coords: '709 90 -638',
+        cities: null,
+        regime: null,
+        note: null
+      },
+      ug_empire: {
+        name: 'Южная империя',
+        path: '/ug_empire',
+        owner: 'Leokobuzoff',
+        leaders: null,
+        site: null,
+        coords: '-159 75 -176',
+        cities: null,
+        regime: null,
+        note: 'Владелец неактивен более 7 месяцев 3 дней 4 часов. Государство имеет большое количество колоний и городов, названия которым не дано Лидером.'
+      }
+    };
+
+    // Ordered list for home page
+    const countryOrder = [
+      'fg', 'moggartha', 'ceskorep', 'slavyaniya', 'kg',
+      'jp', 'au', 'negerland', 'pangea', 'antarktida', 'ug_empire'
+    ];
+
+    // ========== Helpers ==========
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function siteLink(url) {
+      if (!url) return '<span style="color:var(--text-dim)">отсутствует</span>';
+      return `<a href="${escapeHtml(url)}" target="_blank" rel="noopener">${escapeHtml(url)}</a>`;
+    }
+
+    // ========== Views ==========
+    function renderHome() {
+      const buttons = countryOrder.map(id => {
+        const c = countries[id];
+        return `
+          <button class="country-btn" data-link="${c.path}">
+            <span class="name">${escapeHtml(c.name)}</span>
+            <span class="meta">${escapeHtml(c.path)}</span>
+            <span class="owner">${escapeHtml(c.owner)}</span>
+          </button>
+        `;
+      }).join('');
+
+      return `
+        <div class="page">
+          <div class="hero">
+            <h1>Добро пожаловать на политический проект The FlorestMC</h1>
+            <p>На данной Википедии вы можете увидеть информацию о различных государствах на проекте.</p>
+            <p class="sub">Владелец, координаты, города и регионы государства.</p>
+          </div>
+
+          <div class="cta-box">
+            <p>Если вы хотите добавить информацию о вашей стране — кидайте PR (Pull Request)</p>
+            <div class="cta-links">
+              <a href="https://github.com/florestdev/florestmc-wikipedia" target="_blank" rel="noopener">
+                GitHub Repository
+              </a>
+              <a href="https://florestmc.ru" target="_blank" rel="noopener">
+                Наш сайт — florestmc.ru
+              </a>
+            </div>
+          </div>
+
+          <div class="section-title">Государства</div>
+          <div class="countries-grid">
+            ${buttons}
+          </div>
+        </div>
+      `;
+    }
+
+    function renderCountry(id) {
+      const c = countries[id];
+      if (!c) return renderNotFound();
+
+      const leadersHtml = c.leaders && c.leaders.length
+        ? `<div class="info-card">
+             <div class="label">Соответствующие лидеры</div>
+             <div class="value">${c.leaders.map(l => escapeHtml(l)).join(', ')}</div>
+           </div>`
+        : '';
+
+      const regimeHtml = c.regime
+        ? `<div class="info-card">
+             <div class="label">Режим</div>
+             <div class="value">${escapeHtml(c.regime)}</div>
+           </div>`
+        : '';
+
+      const citiesHtml = c.cities && c.cities.length
+        ? `<div class="info-card">
+             <div class="label">Города</div>
+             <div class="cities-list">
+               ${c.cities.map(city => `<span class="city-tag">${escapeHtml(city)}</span>`).join('')}
+             </div>
+           </div>`
+        : `<div class="info-card">
+             <div class="label">Города</div>
+             <div class="value" style="color:var(--text-dim)">неизвестно</div>
+           </div>`;
+
+      const noteHtml = c.note
+        ? `<div class="note">${escapeHtml(c.note)}</div>`
+        : '';
+
+      return `
+        <div class="page">
+          <a href="/" class="back-link" data-link>← Все государства</a>
+
+          <div class="country-header">
+            <h1>${escapeHtml(c.name)}</h1>
+            <div class="path">${escapeHtml(c.path)}</div>
+          </div>
+
+          <div class="info-grid">
+            <div class="info-card highlight">
+              <div class="label">Владелец</div>
+              <div class="value">${escapeHtml(c.owner)}</div>
+            </div>
+
+            ${leadersHtml}
+
+            <div class="info-card">
+              <div class="label">Сайт</div>
+              <div class="value">${siteLink(c.site)}</div>
+            </div>
+
+            <div class="info-card">
+              <div class="label">Координаты столицы</div>
+              <div class="value mono">${escapeHtml(c.coords)}</div>
+            </div>
+
+            ${citiesHtml}
+            ${regimeHtml}
+          </div>
+
+          ${noteHtml}
+        </div>
+      `;
+    }
+
+    function renderNotFound() {
+      return `
+        <div class="page not-found">
+          <h1>404</h1>
+          <p>Страница не найдена</p>
+          <a href="/" class="nav-home" data-link style="display:inline-block">← На главную</a>
+        </div>
+      `;
+    }
+
+    // ========== Router ==========
+    function getPath() {
+      // Support both path and hash for GitHub Pages compatibility
+      let path = window.location.pathname.replace(/\/$/, '') || '/';
+      // If using hash mode (optional fallback)
+      if (window.location.hash && window.location.hash.startsWith('#/')) {
+        path = window.location.hash.slice(1) || '/';
+      }
+      return path;
+    }
+
+    function navigate(to, replace = false) {
+      const url = to === '/' ? '/' : to;
+      if (replace) {
+        history.replaceState(null, '', url);
+      } else {
+        history.pushState(null, '', url);
+      }
+      render();
+    }
+
+    function render() {
+      const path = getPath();
+      const app = document.getElementById('app');
+
+      // Hide "home" button on home page
+      const navHome = document.querySelector('.nav-home');
+      if (navHome) {
+        navHome.style.visibility = path === '/' ? 'hidden' : 'visible';
+      }
+
+      if (path === '/' || path === '') {
+        document.title = 'The FlorestMC Wikipedia';
+        app.innerHTML = renderHome();
+      } else {
+        const id = path.replace(/^\//, '');
+        if (countries[id]) {
+          document.title = `${countries[id].name} — FlorestMC Wiki`;
+          app.innerHTML = renderCountry(id);
+        } else {
+          document.title = '404 — FlorestMC Wiki';
+          app.innerHTML = renderNotFound();
+        }
+      }
+
+      // Bind data-link clicks
+      app.querySelectorAll('[data-link]').forEach(el => {
+        el.addEventListener('click', (e) => {
+          e.preventDefault();
+          const to = el.getAttribute('data-link') || el.getAttribute('href');
+          navigate(to);
+        });
+      });
+    }
+
+    // Event listeners
+    window.addEventListener('popstate', render);
+
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[data-link], button[data-link]');
+      if (link) {
+        e.preventDefault();
+        const to = link.getAttribute('data-link') || link.getAttribute('href');
+        navigate(to);
+      }
+    });
+
+    // Initial render
+    render();
+
+    // For GitHub Pages: if someone lands on /fg directly and server returns 404,
+    // they should have a 404.html that redirects here. This script still works
+    // when opened as index.html or with proper SPA fallback.
+  </script>
+</body>
+</html>

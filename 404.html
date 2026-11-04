@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Redirecting…</title>
+  <script>
+    // GitHub Pages SPA fallback:
+    // When a user opens /fg directly, GH Pages serves this 404.html.
+    // We redirect to index.html while preserving the path via the query/hash.
+    sessionStorage.redirect = location.pathname + location.search + location.hash;
+    location.replace('/' + location.search + location.hash);
+  </script>
+</head>
+<body>
+  <p>Redirecting…</p>
+</body>
+</html>
